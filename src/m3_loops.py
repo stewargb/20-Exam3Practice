@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Grant Stewart.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -46,7 +46,7 @@ def main():
 def run_test_practice_problem3():
     """ Tests the   practice_problem3  function. """
     ###########################################################################
-    # TODO: 2. Implement this TEST function.
+    # Done: 2. Implement this TEST function.
     #   It TESTS the  practice_problem3  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -110,6 +110,13 @@ def run_test_practice_problem3():
              st.SimpleTestCase(practice_problem3,
                                [0, 1, 1.414213562373],
                                [286602]),
+
+             st.SimpleTestCase(practice_problem3,
+                               [-5 , 3, -1],
+                               [-5,-4,-1]),
+             st.SimpleTestCase(practice_problem3,
+                               [0, 1, 0],
+                               [0]),
              ]
     # 14th test:
     big_list = []
@@ -208,8 +215,23 @@ def practice_problem3(start, n, threshold):
       :type n:     int
       :type threshold: float
     """
+    list=[]
+    count = 0
+    if n == 0:
+        return list
+    while True:
+        val = math.sin(start)+math.cos(start)
+        if val > threshold:
+            count = count+1
+            list.append(start)
+        start = start + 1
+        if count == n:
+            break
+    return list
+
+
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ###########################################################################
