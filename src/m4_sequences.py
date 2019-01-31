@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Grant Stewart.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -36,10 +36,10 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_practice_problem4a()
-    run_test_practice_problem4b()
+    #run_test_practice_problem4a()
+    #run_test_practice_problem4b()
     run_test_practice_problem4c()
-    run_test_practice_problem4d()
+    #run_test_practice_problem4d()
 
 
 def is_prime(n):
@@ -134,8 +134,13 @@ def practice_problem4a(sequence):
     Type hints:
       :type sequence: list | tuple | string
     """
+    list = []
+    for k in range(len(sequence)-1):
+        if sequence[k] == sequence[k+1]:
+            list.append(k)
+    return list
     ###########################################################################
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -197,8 +202,13 @@ def practice_problem4b(sequence):
     Type hints:
       :type sequence: (list | tuple) of (float | int)
     """
+    val = float('-inf')
+    for k in range(0,len(sequence),2):
+        if val < sequence[k]:
+            val = sequence[k]
+    return val
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -295,6 +305,21 @@ def practice_problem4c(points):
       :type points: tuple of rg.Point
       :rtype: rg.Point | string
     """
+    points = list(points)
+    for k in range(len(points)):
+        single_point = points[k]
+        valx=single_point.x
+        valy=single_point.y
+        if is_prime(valx) == True:
+            if is_prime(valy) == True:
+
+                val1 = valy
+                val2 = valx
+                points[k] = rg.Point(val1,val2)
+                points = tuple(points)
+                return points[k]
+    points = tuple(points)
+    return 'Not found'
     ###########################################################################
     # TODO: 4. Implement and test this function.
     #     The testing code is already written for you (above).
@@ -391,8 +416,15 @@ def practice_problem4d(sequence):
       :type sequence: (list | tuple) of int
       :rtype: int
     """
+    total = 0
+    for k in range (len(sequence)-1):
+        if is_prime(sequence[k]) == True:
+            if is_prime(sequence[k+1]) == True:
+                if sequence[k] != sequence[k+1]:
+                    total =total + sequence[k]
+    return total
     ###########################################################################
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
